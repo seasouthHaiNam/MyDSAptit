@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool ok=true;
+int cnt(int a[],int n,int k){
+    int sum=0;
+    for(int i=0;i<n;i++){
+        if(a[i]==1)sum++;
+    }
+    return sum==k;
+    }
+void next(int a[],int n){
+    int i=n-1;
+    while(i>=0&&a[i]==1){
+            a[i]=0;
+        i--;
+    }
+    if(i<0){
+        ok=false;
+    }
+    else{
+        a[i]=1;
+    }
+    }
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n,k;
+        cin>>n>>k;
+        int a[n];
+        for(int i=0;i<n;i++){
+            a[i]=0;
+        }
+        while(ok==true){
+            if(cnt(a,n,k)){
+                for(int i=0;i<n;i++){
+                    cout<<a[i];
+                }
+                cout<<endl;
+            }
+            next(a,n);
+        }
+        cout<<endl;
+        ok=true;
+    }
+
+
+}
