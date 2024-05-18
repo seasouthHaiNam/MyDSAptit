@@ -1,0 +1,57 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool ok=true;
+bool check(pair<int,char>a[],int n,int k){
+    int cnt=0;
+    int max_res=0;
+    for(int i=0;i<n;i++){
+        if(a[i].first==0){
+                cnt++;
+                if(cnt>max_res)max_res=cnt;
+                }
+        else cnt=0;
+    }
+    if(max_res==k)return 1;
+    return 0;
+    }
+void next(pair<int,char>a[],int n){
+    int i=n-1;
+    while(i>=0&&a[i].first==1){
+        a[i].first=0;
+        i--;
+    }
+    if(i<0){
+        ok=false;
+    }
+    else{
+        a[i].first=1;
+    }
+    }
+
+int main(){
+    int n,k;
+    cin>>n>>k;
+    pair<int,char>a[n];
+    for(int i=0;i<n;i++){
+        a[i].first=0;
+    }
+    int cnt=0;
+    while(ok==true){
+        if(check(a,n,k)){
+            cnt++;
+            }
+            next(a,n);
+        }
+        cout<<cnt<<endl;
+        ok=true;
+          while(ok==true){
+        if(check(a,n,k)){
+            for(int i=0;i<n;i++){
+                a[i].second=65+a[i].first;
+                cout<<a[i].second;
+            }
+            cout<<endl;
+        }
+            next(a,n);
+        }
+    }
