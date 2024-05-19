@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool ok=true;
+void tobinary(string &a){
+    int n=a.length();
+    for(int i=1;i<n;i++){
+        if(a[i]+a[i-1]-'0'-'0'==2)a[i]='0';
+        else{
+            a[i]=a[i]+a[i-1]-'0';
+        }
+    }
+    }
+int main(){
+    int t;
+    cin>>t;
+    getchar();
+    while(t--){
+        string a;
+        getline(cin,a);
+        tobinary(a);
+        cout<<a;
+        cout<<endl;
+    }
+
+    }
