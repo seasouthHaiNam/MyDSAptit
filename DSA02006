@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<int>X;
+int check[105],a[105];
+int k,n;
+int sum=0;
+int kiemtra=1;
+void in(){
+    cout<<"[";
+    cout<<X[1];
+    for(int j=2;j<X.size();j++){
+        cout<<" "<<X[j];
+    }
+    cout<<"]";
+    }
+void Try(int i,int pos,int a[]){
+    for(int j=pos;j<=n;j++){
+        if(check[j]==0){
+            X.push_back(a[j]);
+            check[j]=1;
+            sum+=a[j];
+            if(sum==k){
+                in();
+                cout<<" ";
+                kiemtra=0;
+            }
+            else if(sum<k) Try(i+1,j+1,a);
+            X.pop_back();
+            sum-=a[j];
+            check[j]=0;
+        }
+
+    }
+}
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        cin>>n;
+        cin>>k;
+        X.push_back(0);
+        for(int i=1;i<=n;i++){
+            cin>>a[i];
+        }
+        sort(a+1,a+n+1);
+        Try(1,1,a);
+        X.pop_back();
+        if(kiemtra)cout<<-1;
+        cout<<endl;
+        kiemtra=1;
+    }
+
+    }
