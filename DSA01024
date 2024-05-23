@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+map<int,string>mp;
+int n,tp=1;
+vector<int>X;
+void in(){
+    for(int k=1;k<=n;k++){
+        cout<<mp[X[k]]<<" ";
+    }
+    cout<<endl;
+    }
+void Try(int i){
+    for(int j=X[i-1]+1;j<tp-n+i;j++){
+        X.push_back(j);
+        if(i==n){
+            in();
+        }
+        else{
+            Try(i+1);
+        }
+        X.pop_back();
+
+    }
+
+}
+int main(){
+    int x; cin>>x;
+    cin>>n;
+    set<string>a;
+    while(x--){
+        string p;
+        cin>>p;
+        a.insert(p);
+    }
+    for(auto i=a.begin();i!=a.end();i++){
+        mp.insert({tp++,(*i)});
+    }
+    X.push_back(0);
+    Try(1);
+
+}
