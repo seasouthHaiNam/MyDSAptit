@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+string s,in;
+char check[91];
+void Try(int i){
+    int n=in.size();
+    for(int j=0;j<n;j++){
+        char x=in[j];
+        if(check[j]==0){
+            s+=x;
+            check[j]=1;
+            if(i==n-1){
+                cout<<s<<" ";
+            }
+            else{
+                Try(i+1);
+            }
+            s.pop_back();
+             check[j]=0;
+        }
+    }
+    }
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        cin>>in;
+        sort(in.begin(),in.end());
+        Try(0);
+        cout<<endl;
+    }
+
+    }
