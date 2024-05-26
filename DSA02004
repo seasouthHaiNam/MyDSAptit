@@ -1,0 +1,65 @@
+#include<bits/stdc++.h>
+using namespace std;
+int a[100][100];
+int n;
+bool check=true;
+vector<char>X;
+void Try(int i,int j){
+    if(i==n&&j==n){
+        check=false;
+        for(char k:X){
+            cout<<k;
+        }
+        cout<<" ";
+        return;
+    }
+    if(i+1<=n&&a[i+1][j]){
+        a[i+1][j]=0;
+        X.push_back('D');
+        Try(i+1,j);
+        X.pop_back();
+        a[i+1][j]=1;
+    }
+    if(j-1>=1&&a[i][j-1]){
+        a[i][j-1]=0;
+        X.push_back('L');
+        Try(i,j-1);
+        X.pop_back();
+        a[i][j-1]=1;
+    }
+     if(j+1<=n&&a[i][j+1]){
+        a[i][j+1]=0;
+        X.push_back('R');
+        Try(i,j+1);
+        X.pop_back();
+        a[i][j+1]=1;
+    }
+    if(i-1>=1&&a[i-1][j]){
+        a[i-1][j]=0;
+        X.push_back('U');
+        Try(i-1,j);
+        X.pop_back();
+        a[i-1][j]=1;
+    }
+}
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        cin>>n;
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=n;j++){
+                cin>>a[i][j];
+            }
+        }
+        if(a[1][1]==0||a[n][n]==0)cout<<-1;
+        else {
+        a[1][1]=0;
+        Try(1,1);
+        if(check)cout<<-1;
+        }
+        cout<<endl;
+        check=true;
+    }
+
+    }
