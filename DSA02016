@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+int cot[100],nguoc[100],xuoi[100];
+int cnt,n;
+int sum;
+void setup(){
+    memset(cot,0,100);
+    memset(nguoc,0,100);
+    memset(xuoi,0,100);
+    }
+void Try(int i){
+    for(int j=1;j<=n;j++){
+        if(cot[j]==0&&xuoi[i+j-1]==0&&nguoc[i-j+n]==0){
+            sum++;
+            cot[j]=1;
+            xuoi[i+j-1]=1;
+            nguoc[i-j+n]=1;
+            if(i==n){
+                if(sum==n){
+                    cnt++;
+                }
+            }
+            else Try(i+1);
+            sum--;
+            cot[j]=0;
+            xuoi[i+j-1]=0;
+            nguoc[i-j+n]=0;
+        }
+    }
+}
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        cnt=0;
+        sum=0;
+        cin>>n;
+        setup();
+        Try(1);
+        cout<<cnt<<endl;
+    }
+
+    }
