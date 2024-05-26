@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+string s;
+void Try(int pos,int k){
+    if(k==0){
+        return;
+    }
+    int max_res=pos;
+    for(int j=pos+1;j<s.size();j++){
+            if(s[j]>s[max_res])max_res=j;
+    }
+    swap(s[pos],s[max_res]);
+    k--;
+    Try(pos+1,k);
+    }
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int k;
+        cin>>k;
+        cin>>s;
+        Try(0,k);
+        cout<<s<<endl;
+    }
+
+    }
