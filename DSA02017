@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+int cot[10],nguoc[25],xuoi[25];
+int a[10][10];
+int sum,max_res;
+int cnt=0;
+void setup(){
+    memset(cot,0,10);
+    memset(nguoc,0,25);
+    memset(xuoi,0,25);
+    cnt=0;
+    max_res=0;
+    }
+void Try(int i){
+    for(int j=1;j<=8;j++){
+        if(cot[j]==0&&nguoc[i-j+8]==0&&xuoi[i+j-1]==0){
+                cnt++;
+            cot[j]=1;
+            nguoc[i-j+8]=1;
+            xuoi[i+j-1]=1;
+            sum+=a[i][j];
+            if(cnt==8&&i==8){
+                if(sum>max_res){
+                        max_res=sum;
+                }
+            }
+            else Try(i+1);
+            sum-=a[i][j];
+            cnt--;
+            cot[j]=0;
+            nguoc[i-j+8]=0;
+            xuoi[i+j-1]=0;
+        }
+
+    }
+
+    }
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        setup();
+        for(int i=1;i<=8;i++){
+            for(int j=1;j<=8;j++){
+                cin>>a[i][j];
+            }
+        }
+        Try(1);
+        cout<<max_res<<endl;
+    }
+
+    }
