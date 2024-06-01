@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long greedy(vector<int>a){
+    long long x=0,y=0;
+    for(int i=0;i<a.size();i+=2){
+        x=x*10+a[i];
+       if(i+1<a.size())y=y*10+a[i+1];
+    }
+    return x+y;
+    }
+int main(){
+   int t;
+   cin>>t;
+   while(t--){
+        int n; cin>>n;
+        vector<int>a;
+        for(int i=0;i<n;i++){
+            int x;cin>>x;
+            if(x)a.push_back(x);
+        }
+        sort(a.begin(),a.end());
+        cout<<greedy(a)<<"\n";
+   }
+
+    }
