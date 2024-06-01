@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+int hieu(vector<int>a,int k){
+    int sl=fmax(k,a.size()-k);
+    int sum1=0;
+    for(int i=0;i<sl;i++){
+        sum1+=a[i];
+    }
+    int sum2=0;
+    for(int i=sl;i<a.size();i++){
+        sum2+=a[i];
+    }
+    return sum1-sum2;
+    }
+bool cmp(const int a,const int b){
+    if(a>b)return 1;
+    return 0;
+    }
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+            int n,k;cin>>n>>k;
+            vector<int>a;
+            for(int i=0;i<n;i++){
+                int x;
+                cin>>x;
+                a.push_back(x);
+            }
+            sort(a.begin(),a.end(),cmp);
+            cout<<hieu(a,k)<<"\n";
+    }
+
+    }
