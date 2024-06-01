@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+long long e=1000000007;
+int modd(long long a[],int n){
+    int res=0;
+    for(int i=0;i<n;i++){
+        res=(res+(a[i]*i))%e;
+    }
+    return res;
+    }
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+            int n;
+            cin>>n;
+            long long a[n];
+        for(int i=0;i<n;i++){
+            cin>>a[i];
+        }
+        sort(a,a+n);
+        cout<<modd(a,n)<<"\n";
+    }
+
+
+    }
