@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+long long mod=1e9+7;
+ll minsum(multiset<ll>a){
+    ll sum=0;
+    while(a.size()>1){
+        auto t1=a.begin();
+        ll x1=(*t1)%mod;
+        a.erase(t1);
+        auto t2=a.begin();
+        ll x2=(*t2)%mod;
+        a.erase(t2);
+        a.insert((x1+x2)%mod);
+        sum=(sum%mod+(x1+x2)%mod)%mod;
+    }
+    return sum;
+    }
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        ll n;
+        cin>>n;
+        multiset<ll>a;
+        for(ll i=0;i<n;i++){
+            ll x;
+            cin>>x;
+            a.insert(x);
+        }
+        cout<<minsum(a)<<endl;
+
+    }
+
+
+    }
