@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+ll minsum(multiset<ll>a){
+    ll sum=0;
+    for(auto t=a.begin();t!=a.end();t++){
+       ll x=(*t);
+        t++;
+        if(t==a.end())break;
+        x+=(*t);
+        sum+=x;
+        a.insert(x);
+    }
+    return sum;
+    }
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        multiset<ll>a;
+        for(int i=0;i<n;i++){
+            ll x;
+            cin>>x;
+            a.insert(x);
+        }
+        cout<<minsum(a)<<endl;
+
+    }
+
+
+    }
