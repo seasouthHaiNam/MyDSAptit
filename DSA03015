@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+void check(){
+    int n,s,m;
+    cin>>n>>s>>m;
+    if(((n-m)*6<m&&s>=7)||n<m){
+        cout<<"-1\n";
+        return;
+    }
+    if(1.0*m*s/n>m*s/n)cout<<(m*s/n)+1<<"\n";
+    else cout<<m*s/n<<endl;
+    }
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        check();
+    }
+
+    }
