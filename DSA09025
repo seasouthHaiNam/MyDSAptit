@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<int>a[1001];
+bool visited[1001];
+int parent[1001];
+int n,m;
+void dfs(int s){
+    visited[s]=true;
+    for(int k:a[s]){
+        if(visited[k]==false){
+            dfs(k);
+            parent[k]=s;
+        }
+    }
+
+    }
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+            int s,en;
+        cin>>n>>m>>s>>en;
+            memset(visited,false,sizeof(visited));
+            for(int i=1;i<=n;i++){
+                a[i].clear();
+            }
+        for(int i=0;i<m;i++){
+            int x,y;
+            cin>>x>>y;
+            a[x].push_back(y);
+        }
+        for(int i=1;i<=n;i++){
+            sort(a[i].begin(),a[i].end());
+        }
+        dfs(s);
+        if(visited[en]==false){
+            cout<<-1<<"\n";
+            continue;
+        }
+        int x;
+        x=en;
+        stack<int>st;
+        while(x!=s){
+            st.push(x);
+            x=parent[x];
+        }
+        st.push(x);
+        while(st.empty()==false){
+            cout<<st.top()<<" ";
+            st.pop();
+        }
+        cout<<"\n";
+        cout<<endl;
+    }
+
+    }
