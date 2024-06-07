@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<int>a[1001];
+bool visited[1001];
+int n,m;
+void dfs(int s){
+    visited[s]=true;
+    for(int k:a[s]){
+        if(visited[k]==false){
+            dfs(k);
+        }
+    }
+
+    }
+int tplt(){
+    int cnt=0;
+    for(int i=1;i<=n;i++){
+        if(visited[i]==false){
+            cnt++;
+            dfs(i);
+        }
+    }
+    return cnt;
+    }
+void dt(){
+    int total=tplt();
+    for(int i=1;i<=n;i++){
+        memset(visited,false,sizeof(visited));
+        visited[i]=true;
+        int after=tplt();
+        if(after>total){
+            cout<<i<<" ";
+        }
+    }
+
+    }
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        cin>>n>>m;
+        for(int i=1;i<=n;i++){
+            a[i].clear();
+        }
+        memset(visited,false,sizeof(visited));
+        for(int i=0;i<m;i++){
+            int x,y;
+            cin>>x>>y;
+            a[x].push_back(y);
+            a[y].push_back(x);
+        }
+        for(int i=1;i<=n;i++){
+            sort(a[i].begin(),a[i].end());
+        }
+        dt();
+        cout<<"\n";
+    }
+
+    }
