@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+int a[505][505];
+int x[8]={-1,-1,-1,0,0,1,1,1};
+int y[8]={-1,1,0,-1,1,-1,0,1};
+int n,m;
+void tvet(int i,int j){
+    a[i][j]=0;
+    for(int k=0;k<8;k++){
+            if(i+x[k]>=0&&i+x[k]<n&&j+y[k]>=0&&j+y[k]<m){
+            if(a[i+x[k]][j+y[k]]){
+            tvet(i+x[k],j+y[k]);
+                }
+            }
+    }
+    }
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        cin>>n>>m;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                cin>>a[i][j];
+            }
+        }
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(a[i][j]==1){
+                    cnt++;
+                    tvet(i,j);
+                }
+            }
+        }
+        cout<<cnt<<"\n";
+    }
+
+    }
