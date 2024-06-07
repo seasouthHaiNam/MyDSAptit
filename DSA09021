@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int v;
+    cin>>v;
+    vector<int>a[1001];
+    for(int i=1;i<=v;i++){
+        for(int j=1;j<=v;j++){
+            int aij;
+            cin>>aij;
+            if(aij>0)a[i].push_back(j);
+        }
+    }
+    for(int i=1;i<=v;i++){
+        for(int k:a[i]){
+            cout<<k<<" ";
+        }
+        cout<<endl;
+    }
+
+    }
