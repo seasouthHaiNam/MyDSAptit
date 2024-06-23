@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int mod=1e9+7;
+typedef long long ll;
+ll lt(ll n,ll k){
+    if(k==1)return n;
+    if(k%2==0)return (lt(n,k/2)%mod*lt(n,k/2)%mod)%mod;
+    return (lt(n,k/2)%mod*lt(n,k/2)%mod*n%mod)%mod;
+
+    }
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        string a;
+        cin>>a;
+        ll n=stoll(a);
+        reverse(a.begin(),a.end());
+        ll k=stoll(a);
+        cout<<lt(n,k)<<endl;
+    }
+
+    }
