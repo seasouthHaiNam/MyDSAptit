@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int mod=1e9+7;
+long long lt(long long n,long long k){
+    if(k==1)return n;
+    if(k%2==0)return (lt(n,k/2)%mod*lt(n,k/2)%mod)%mod;
+    else return (lt(n,k/2)%mod*lt(n,k/2)%mod*(n%mod))%mod;
+    }
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        long long n,k;
+        cin>>n>>k;
+        cout<<lt(n,k)<<endl;
+    }
+    }
